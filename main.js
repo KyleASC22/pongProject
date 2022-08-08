@@ -1,3 +1,8 @@
+
+
+
+let diffs = difficulties;
+
 let r = 255
 let g = 255
 let b = 255
@@ -9,11 +14,14 @@ var paddleHeight = 40;
 var length = 200;
 var backgroundColor = 128
 let points = 0;
+
 function setup() {
-  createCanvas(800,600);
+    let div = document.getElementById("main_div");
+  createCanvas(600,600);
   noCursor();
   ballX = random(width)
   ballY = random(height / 2);
+  
 }
 function draw() {
   //frameRate(1)
@@ -46,10 +54,13 @@ function draw() {
       points += 25
     }
     else {
-      background(255,0,0)
-        fill(0);
-      text("GAME OVER!", width / 2, height / 2);
-      noLoop();
+        health--;
+        if (health = 0) {  
+            background(255,0,0)
+            fill(0);
+            text("GAME OVER!", width / 2, height / 2);
+            noLoop();
+        }
     }
   }
   if(length <= 0){ // if the paddle length is 0 then a you win screen will appear
